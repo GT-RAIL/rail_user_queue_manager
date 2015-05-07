@@ -1,8 +1,8 @@
-queue_manager [![Build Status](https://api.travis-ci.org/WPI-RAIL/queue_manager.png)](https://travis-ci.org/WPI-RAIL/queue_manager)
-=============
+rail_user_queue_manager [![Build Status](https://api.travis-ci.org/WPI-RAIL/rail_user_queue_manager.png)](https://travis-ci.org/WPI-RAIL/rail_user_queue_manager)
+=======================
 
 #### Server Side ROS Queue Node
-For full documentation, see [the ROS wiki](http://ros.org/wiki/rail_segmentation).
+For full documentation, see [the ROS wiki](http://ros.org/wiki/rail_user_queue_manager).
 
 ### License
 queue_manager is released with a BSD license. For full terms and conditions, see the [LICENSE](LICENSE) file.

@@ -2,27 +2,28 @@
 // Created by pdmitrano on 4/1/15.
 //
 
-#include <queue_manager/queue_manager.h>
+#include <rail_user_queue_manager/rail_user_queue_manager.h>
 
 using namespace std;
+using namespace rail;
 
 int main(int argc, char *argv[])
 {
   ros::init(argc, argv, "queue_manager");
 
   //construct a queue
-  QueueManager queue_manager;
+  UserQueueManager queue_manager;
 
   return EXIT_SUCCESS;
 }
 
-QueueManager::QueueManager() : countdown_(DEFAULT_TRIAL), run_countdown_(false)
+UserQueueManager::UserQueueManager() : countdown_(DEFAULT_TRIAL), run_countdown_(false)
 {
   //sent out queue
-  ros::Publisher queue_pub = private_node_.advertise<queue_manager::Queue>("queue", 1000);
+  ros::Publisher queue_pub = private_node_.advertise<rail_user_queue_manager::Queue>("queue", 1000);
   //add user to queue when someone new visits the website
   ros::ServiceServer update_queue_serv = private_node_.advertiseService("update_queue",
-                                                                        &QueueManager::onUpdateQueue, this);
+                                                                        &UserQueueManager::onUpdateQueue, this);
 
   //loop at the rate of LOOP_RATE, and publish queue
   ros::Rate r(LOOP_RATE);
@@ -31,8 +32,7 @@ QueueManager::QueueManager() : countdown_(DEFAULT_TRIAL), run_countdown_(false)
 
   while (ros::ok())
   {
-
-    ROS_INFO("countdown: %i\n", countdown_);
+//    ROS_INFO("countdown: %i\n", countdown_);
 
     //only run the countdown when the queue isn't empty
     if (run_countdown_)
@@ -54,7 +54,7 @@ QueueManager::QueueManager() : countdown_(DEFAULT_TRIAL), run_countdown_(false)
       countdown_--;
     }
 
-    queue_manager::Queue queue_message;
+    rail_user_queue_manager::Queue queue_message;
 
     deque<pair<int, int> >::iterator it = queue_.begin();
     int position = 0;
@@ -66,7 +66,7 @@ QueueManager::QueueManager() : countdown_(DEFAULT_TRIAL), run_countdown_(false)
     {
       pair<int, int> user = *(it++);
 
-      queue_manager::UserStatus user_status;
+      rail_user_queue_manager::UserStatus user_status;
       user_status.user_id = user.first;
 
       //calculate wait time in seconds
@@ -100,7 +100,8 @@ QueueManager::QueueManager() : countdown_(DEFAULT_TRIAL), run_countdown_(false)
   }
 }
 
-bool QueueManager::onUpdateQueue(queue_manager::UpdateQueue::Request & req, queue_manager::UpdateQueue::Response & res)
+bool UserQueueManager::onUpdateQueue(rail_user_queue_manager::UpdateQueue::Request &req,
+                                     rail_user_queue_manager::UpdateQueue::Response &res)
 {
   //get the user Id from the message
   int user_id = req.user_id;

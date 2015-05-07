@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(queue_manager)
+project(rail_user_queue_manager)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)

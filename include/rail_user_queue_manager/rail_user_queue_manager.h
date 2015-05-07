@@ -2,16 +2,18 @@
 // Created by pdmitrano on 4/1/15.
 //
 
-#ifndef QUEUE_MANAGER_H_
-#define QUEUE_MANAGER_H_
+#ifndef RAIL_USER_QUEUE_MANAGER_H_
+#define RAIL_USER_QUEUE_MANAGER_H_
 
 #include <ros/ros.h>
-#include <queue_manager/Queue.h>
-#include <queue_manager/UserStatus.h>
-#include <queue_manager/UpdateQueue.h>
+#include <rail_user_queue_manager/Queue.h>
+#include <rail_user_queue_manager/UserStatus.h>
+#include <rail_user_queue_manager/UpdateQueue.h>
 #include <deque>
 
-class QueueManager
+namespace rail
+{
+class UserQueueManager
 {
 public:
   /*!brief The frequency of the loop in (1/seconds). This is how often we publish the queue */
@@ -22,7 +24,7 @@ public:
   /*!
    * \brief This starts the server, waits for param server and create clickable parking spots
    */
-  QueueManager();
+  UserQueueManager();
 
 private:
   /*! the queue to hold the user_ids and wait times in order. */
@@ -37,8 +39,10 @@ private:
   /*!
    * \brief Add or remove a user to the deque
    */
-  bool onUpdateQueue(queue_manager::UpdateQueue::Request &req, queue_manager::UpdateQueue::Response &res);
+  bool onUpdateQueue(rail_user_queue_manager::UpdateQueue::Request &req,
+      rail_user_queue_manager::UpdateQueue::Response &res);
 
 };
+}
 
 #endif

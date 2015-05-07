@@ -6,9 +6,9 @@
 #define _PROJECT_RMS_QUEUE_MANAGER_H_
 
 #include "ros/ros.h"
-#include <rms_queue_manager/RMSQueue.h> //custom message file with array of UserStatus
-#include <rms_queue_manager/UserStatus.h> //custom message file with user_id and wait_time
-#include <rms_queue_manager/UpdateQueue.h>
+#include <queue_manager/RMSQueue.h> //custom message file with array of UserStatus
+#include <queue_manager/UserStatus.h> //custom message file with user_id and wait_time
+#include <queue_manager/UpdateQueue.h>
 #include "std_msgs/Int32MultiArray.h"
 #include "std_msgs/Int32.h"
 #include <deque>
@@ -52,8 +52,8 @@ private:
   /**
   * \brief Add or remove a user to the deque
   */
-  bool on_update_queue(rms_queue_manager::UpdateQueue::Request &req,
-                       rms_queue_manager::UpdateQueue::Response &res);
+  bool on_update_queue(queue_manager::UpdateQueue::Request &req,
+                       queue_manager::UpdateQueue::Response &res);
 
 };
 

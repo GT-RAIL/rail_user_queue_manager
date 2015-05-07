@@ -2,14 +2,14 @@
 // Created by pdmitrano on 4/1/15.
 //
 
-#include <rms_queue_manager/rms_queue_manager.h>
+#include <queue_manager/queue_manager.h>
 
 int main(int argc, char *argv[])
 {
-  ros::init(argc, argv, "rms_queue_manager");
+  ros::init(argc, argv, "queue_manager");
 
   //construct a queue
-  RMS_Queue_Manager rms_queue_manager;
+  RMS_Queue_Manager queue_manager;
 
   return EXIT_SUCCESS;
 }
@@ -22,7 +22,7 @@ RMS_Queue_Manager::RMS_Queue_Manager()
   ros::NodeHandle n;
 
   //sent out queue
-  ros::Publisher queue_pub = n.advertise<rms_queue_manager::RMSQueue>("rms_queue", 1000);
+  ros::Publisher queue_pub = n.advertise<queue_manager::RMSQueue>("rms_queue", 1000);
 
   //add user to queue when someone new visits the website
   ros::ServiceServer update_queue_serv = n.advertiseService("update_queue", &RMS_Queue_Manager::on_update_queue, this);
@@ -57,7 +57,7 @@ RMS_Queue_Manager::RMS_Queue_Manager()
       countdown_--;
     }
 
-    rms_queue_manager::RMSQueue rms_queue_message;
+    queue_manager::RMSQueue queue_message;
 
     std::deque<std::pair<int, int> >::iterator it = queue_.begin();
     int position = 0;
@@ -69,7 +69,7 @@ RMS_Queue_Manager::RMS_Queue_Manager()
     {
       std::pair<int, int> user = *(it++);
 
-      rms_queue_manager::UserStatus user_status;
+      queue_manager::UserStatus user_status;
       user_status.user_id = user.first;
 
       //calculate wait time in seconds
@@ -88,7 +88,7 @@ RMS_Queue_Manager::RMS_Queue_Manager()
       ros::Duration time_left(t_left);
       user_status.wait_time = wait_time;
       user_status.time_left = time_left;
-      rms_queue_message.queue.push_back(user_status);
+      queue_message.queue.push_back(user_status);
 
       position++;
 
@@ -96,15 +96,15 @@ RMS_Queue_Manager::RMS_Queue_Manager()
     }
 
     //publish the queue message
-    queue_pub.publish(rms_queue_message);
+    queue_pub.publish(queue_message);
 
     ros::spinOnce();
     r.sleep();
   }
 }
 
-bool RMS_Queue_Manager::on_update_queue(rms_queue_manager::UpdateQueue::Request &req,
-                                        rms_queue_manager::UpdateQueue::Response &res)
+bool RMS_Queue_Manager::on_update_queue(queue_manager::UpdateQueue::Request &req,
+                                        queue_manager::UpdateQueue::Response &res)
 {
   //get the user Id from the message
   int user_id = req.user_id;

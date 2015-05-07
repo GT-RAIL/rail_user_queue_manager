@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>rms_queue_manager</name>
+  <name>queue_manager</name>
   <version>0.0.0</version>
   <description>Manages a queue of users for integration with the RMS system</description>
 

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(rms_queue_manager)
+project(queue_manager)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -52,21 +52,21 @@ include_directories(
 )
 
 ## Declare a cpp executable
-add_executable(rms_queue_manager src/rms_queue_manager.cpp)
+add_executable(queue_manager src/queue_manager.cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(rms_queue_manager
+target_link_libraries(queue_manager
    ${catkin_LIBRARIES}
 )
 
-add_dependencies(rms_queue_manager rms_queue_manager_gencpp)
+add_dependencies(queue_manager queue_manager_gencpp)
 
 #############
 ## Install ##
 #############
 
 ## Mark executables and/or libraries for installation
-#install(TARGETS rms_queue_manager
+#install(TARGETS queue_manager
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 #)
 

@@ -1,3 +1,3 @@
-uint32 user_id # user_id
-duration wait_time # estimated wait time
-duration time_left # time left for active user
+uint32 user_id      # The user ID
+duration wait_time  # Estimated wait time
+duration time_left  # Time left for active user

@@ -32,7 +32,7 @@ UserQueueManager::UserQueueManager() : countdown_(DEFAULT_TRIAL), run_countdown_
 
   while (ros::ok())
   {
-//    ROS_INFO("countdown: %i\n", countdown_);
+    // ROS_INFO("countdown: %i\n", countdown_);
 
     //only run the countdown when the queue isn't empty
     if (run_countdown_)

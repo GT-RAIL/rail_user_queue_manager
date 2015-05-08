@@ -89,7 +89,7 @@ UserQueueManager::UserQueueManager() : countdown_(DEFAULT_TRIAL), run_countdown_
 
       position++;
 
-      ROS_INFO("user %i", user_status.user_id);
+      //ROS_INFO("user %i", user_status.user_id);
     }
 
     //publish the queue message

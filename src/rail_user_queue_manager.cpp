@@ -9,7 +9,7 @@ using namespace rail;
 
 int main(int argc, char *argv[])
 {
-  ros::init(argc, argv, "queue_manager");
+  ros::init(argc, argv, "rail_user_queue_manager");
 
   //construct a queue
   UserQueueManager queue_manager;

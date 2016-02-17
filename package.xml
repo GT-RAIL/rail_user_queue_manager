@@ -5,14 +5,14 @@
   <description>Server Side ROS Queue Node</description>
 
   <author email="pdmitrano@wpi.edu">Peter Mitrano</author>
-  <maintainer email="davidkent@wpi.edu">David Kent</maintainer>
+  <maintainer email="dekent@gatech.edu">David Kent</maintainer>
   <maintainer email="rctoris@wpi.edu">Russell Toris</maintainer>
 
   <license>BSD</license>
 
   <url type="website">http://ros.org/wiki/queue_manager</url>
-  <url type="bugtracker">https://github.com/WPI-RAIL/queue_manager/issues</url>
-  <url type="repository">https://github.com/WPI-RAIL/queue_manager</url>
+  <url type="bugtracker">https://github.com/GT-RAIL/queue_manager/issues</url>
+  <url type="repository">https://github.com/GT-RAIL/queue_manager</url>
 
   <buildtool_depend>catkin</buildtool_depend>
 

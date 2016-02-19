@@ -1,4 +1,4 @@
-rail_user_queue_manager [![Build Status](https://api.travis-ci.org/WPI-RAIL/rail_user_queue_manager.png)](https://travis-ci.org/WPI-RAIL/rail_user_queue_manager)
+rail_user_queue_manager [![Build Status](https://api.travis-ci.org/GT-RAIL/rail_user_queue_manager.png)](https://travis-ci.org/GT-RAIL/rail_user_queue_manager)
 =======================
 
 #### Server Side ROS Queue Node
